@@ -12,7 +12,7 @@ type TInputProps = {
   required?: boolean;
 };
 
-const BBInput = ({
+const BDInput = ({
   name,
   label,
   type = "text",
@@ -45,4 +45,4 @@ const BBInput = ({
   );
 };
 
-export default BBInput;
+export default BDInput;

@@ -15,7 +15,7 @@ import {
     onSubmit: SubmitHandler<FieldValues>;
   } & TFormConfig;
   
-  const BBForm = ({
+  const BDForm = ({
     children,
     onSubmit,
     resolver,
@@ -47,4 +47,4 @@ import {
     );
   };
   
-  export default BBForm;
+  export default BDForm;
