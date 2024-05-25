@@ -1,15 +1,11 @@
-import { Button } from "@mui/material";
-import React from "react";
+import HeroSection from "@/components/UI/HomePage/HeroSection/HeroSection";
 
-const page = () => {
+const HomePage = () => {
   return (
-    <div>
-      <h1>Blodd Donation Home Page</h1>
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-    </div>
+    <>
+      <HeroSection />
+    </>
   );
 };
 
-export default page;
+export default HomePage;

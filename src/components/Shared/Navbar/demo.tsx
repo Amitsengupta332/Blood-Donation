@@ -187,3 +187,60 @@ export default Navbar;
 // };
 // export default Navbar;
 
+
+  // <Container
+    //   sx={{
+    //     display: "flex",
+    //     direction: "row",
+    //     gap: 10,
+    //     my: 16,
+    //   }}>
+    //   {/* left */}
+    //   <Box sx={{ flex: 1, position: "relative" }}>
+    //     <Box
+    //       sx={{
+    //         position: "absolute",
+    //         width: "700px",
+    //         left: "-90px",
+    //         top: "-120px",
+    //       }}>
+    //       <Image src={grid} alt="doctor1" />
+    //     </Box>
+    // <Typography variant="h2" component="h1" gutterBottom>
+    //   Be a Hero, Save Lives: Donate Blood Today!
+    // </Typography>
+    // <Typography variant="h5" component="p" gutterBottom>
+    //   Your donation can give someone another chance at life. Join our
+    //   community of lifesavers.
+    // </Typography>
+
+    //     <Box sx={{ display: "flex", gap: 2, mt: 4 }}>
+    //       <Button variant="outlined">
+    //         <SearchIcon /> Search Donor
+    //       </Button>
+    //     </Box>
+    //   </Box>
+
+    //   {/* right */}
+    //   <Box
+    //     sx={{
+    //       p: 1,
+    //       flex: 1,
+    //       display: "flex",
+    //       gap: 20,
+    //       justifyContent: "center",
+    //       position: "relative",
+    //       mt: 0,
+    //     }}>
+    //     <Box
+    //       sx={{
+    //         position: "absolute",
+
+    //         top: "-20px",
+    //       }}>
+    //       <Image src={image1} alt="arrow" />
+    //     </Box>
+
+    //   </Box>
+    // </Container>
+

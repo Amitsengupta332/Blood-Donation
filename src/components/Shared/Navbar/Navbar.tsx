@@ -87,7 +87,7 @@ const Navbar = () => {
               <Link href={"/"} color="inherit">
                 Home
               </Link>
-              <Link href={"/about-us"} color="inherit">
+              <Link href={"/aboutUs"} color="inherit">
                 About Us
               </Link>
               <Link href={"/"} color="inherit">

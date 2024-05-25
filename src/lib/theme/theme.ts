@@ -53,9 +53,6 @@ export const theme = createTheme({
     h3: {
       color: "#D32F2F", // Darker Red for headings
     },
-    button: {
-      textTransform: "none", // Avoid uppercase transformation for buttons
-    },
   },
 });
 
