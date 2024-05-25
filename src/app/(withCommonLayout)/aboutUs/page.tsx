@@ -1,11 +1,11 @@
- 
+import { Container } from "@mui/material";
 
 const aboutUs = () => {
-    return (
-        <div>
-            <h1>About Us ....</h1>
-        </div>
-    );
+  return (
+    <Container>
+      <h1>About Us ....</h1>
+    </Container>
+  );
 };
 
 export default aboutUs;
