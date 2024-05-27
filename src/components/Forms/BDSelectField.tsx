@@ -13,7 +13,7 @@ interface ITextField {
   items: string[];
 }
 
-const BBSelectField = ({
+const BDSelectField = ({
   items,
   name,
   label,
@@ -56,4 +56,4 @@ const BBSelectField = ({
   );
 };
 
-export default BBSelectField;
+export default BDSelectField;

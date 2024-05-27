@@ -45,9 +45,9 @@ const Navbar = () => {
               }}
             >
               <Image src={logo} alt="logo" height={100} width={100} />
-              {/* <Typography fontSize={"26px"} fontWeight={600}>
+              <Typography fontSize={"26px"} fontWeight={600}>
                 Blood Labs
-              </Typography> */}
+              </Typography>
             </Box>
           </Typography>
           {isMobile ? (
@@ -74,7 +74,7 @@ const Navbar = () => {
                 }}
               >
                 <MenuItem href={"/"}>Home</MenuItem>
-                <MenuItem href={"/"}>About Us</MenuItem>
+                <MenuItem href={"/aboutUs"}>About Us</MenuItem>
                 <MenuItem href={"/"}>My Profile</MenuItem>
               </Menu>
             </Box>

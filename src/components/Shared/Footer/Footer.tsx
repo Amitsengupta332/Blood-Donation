@@ -31,20 +31,20 @@ const Footer = () => {
           justifyContent="center"
           alignItems="center"
           textAlign={isMobile ? "center" : "left"}>
-          <Typography
+          {/* <Typography
             component={Link}
             href="/consultation"
             sx={{ textDecoration: "none", color: "inherit" }}>
             Consultation
-          </Typography>
+          </Typography> */}
           <Typography
             component={Link}
-            href="/about"
+            href="/aboutUs"
             sx={{ textDecoration: "none", color: "inherit" }}>
             About Us
           </Typography>
-          <Typography>Medicine</Typography>
-          <Typography>Diagnostics</Typography>
+          {/* <Typography>Medicine</Typography>
+          <Typography>Diagnostics</Typography> */}
           <Typography>NGOs</Typography>
         </Stack>
 
@@ -68,7 +68,7 @@ const Footer = () => {
           alignItems="center"
           textAlign={isMobile ? "center" : "left"}>
           <Typography component="p">
-            &copy;2024 Ph HealthCare. All Rights Reserved.
+            &copy;2024 Blood Labs. All Rights Reserved.
           </Typography>
           <Typography
             variant="h4"
@@ -76,7 +76,7 @@ const Footer = () => {
             href="/"
             fontWeight={600}
             sx={{ textDecoration: "none", color: "inherit" }}>
-            P<Box component="span">H</Box> Health Care
+            {/* Blood Labs */}B<Box component="span">lood</Box> Labs
           </Typography>
           <Typography component="p">
             Privacy Policy! Terms & Conditions
