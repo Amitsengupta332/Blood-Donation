@@ -13,6 +13,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
+import { registerUser } from "@/services/actions/registerUser";
+import { storeUserInfo } from "@/services/auth.services";
 
 export const ValidationSchema = z.object({
   name: z.string().min(1, "Please enter you name!"),
@@ -45,7 +47,7 @@ const RegisterPage = () => {
       return;
     }
 
-    const registerUserData = {
+    const registerData = {
       name: values?.name,
       email: values?.email,
       password: values?.password,
@@ -57,7 +59,7 @@ const RegisterPage = () => {
     };
 
     try {
-      // const res = await registerUser(registerUserData);
+      // const res = await registerUser(registerData);
       // console.log(res);
       // // register user direct login functionality
       // if (res?.data?.id) {
