@@ -1,17 +1,22 @@
 "use server";
 
-export const registerUser = async (formData: FormData) => {
+import { FieldValues } from "react-hook-form";
+
+export const registerUser = async (data: FieldValues) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/register`,
+    `http://localhost:5000/api/register`,
     {
       method: "POST",
       cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(data),
     }
   );
+
   const userInfo = await res.json();
   return userInfo;
 };
+
+//    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/register`,

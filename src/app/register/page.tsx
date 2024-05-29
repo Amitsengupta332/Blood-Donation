@@ -14,9 +14,13 @@ import { useRouter } from "next/navigation";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { registerUser } from "@/services/actions/registerUser";
+import BDDatePicker from "@/components/Forms/BDDatePicker";
+import dayjs from "dayjs";
+import { dateFormatter } from "@/utils/dateFormatter";
+import { userLogin } from "@/services/actions/userLogin";
 import { storeUserInfo } from "@/services/auth.services";
 
-export const ValidationSchema = z.object({
+const ValidationSchema = z.object({
   name: z.string().min(1, "Please enter you name!"),
   email: z.string().email("Please enter a valid email address!"),
   address: z.string().min(1, "Please enter your addresss!"),
@@ -25,7 +29,14 @@ export const ValidationSchema = z.object({
   bloodType: z.string().min(1, "Please select a blood group!"),
   donateOption: z.string().min(1, "Please select a option!"),
   age: z.string().min(1, "Please enter your age!"),
+  // lastDonationDate: z.date(),
+  lastDonationDate: z
+    .custom((val) => val === null || (dayjs.isDayjs(val) && val.isValid()), {
+      message: "Please select a valid date",
+    })
+    .nullable(),
 });
+
 const defaultValues = {
   name: "",
   email: "",
@@ -35,48 +46,45 @@ const defaultValues = {
   donateOption: "",
   address: "",
   age: 0,
+  lastDonationDate: null,
 };
 
 const RegisterPage = () => {
   const [passwordMatchError, setPasswordMatchError] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const router = useRouter();
-  const handleRegister = async (values: FieldValues) => {
-    if (values?.password !== values?.confirmPassword) {
-      toast.error("Password does not match!");
-      return;
-    }
 
+  const router = useRouter();
+
+  const handleRegister = async (values: FieldValues) => {
     const registerData = {
       name: values?.name,
       email: values?.email,
       password: values?.password,
       bloodType: values?.bloodType,
       location: values?.address,
+      lastDonationDate: dateFormatter(values?.lastDonationDate),
       age: Number(values?.age),
-      bio: "Create your bio here ...",
+      bio: "Write Your Bio Here",
       availability: values?.donateOption === "YES" ? true : false,
     };
-
+    console.log(registerData);
+    // console.log(data);
     try {
-      // const res = await registerUser(registerData);
-      // console.log(res);
-      // // register user direct login functionality
-      // if (res?.data?.id) {
-      //   toast.success("User registered successfully!");
-      //   const result = await userLogin({
-      //     password: values.password,
-      //     email: values.email,
-      //   });
-      //   if (result?.data?.accessToken) {
-      //     storeUserInfo({ accessToken: result?.data?.accessToken });
-      //     // router.push("/");
-      //   }
-      // }
+      const res = await registerUser(registerData);
+      console.log(res);
+      if (res?.data?.id) {
+        toast.success("User registered successfully!");
+        const result = await userLogin({
+          password: values.password,
+          email: values.email,
+        });
+        if (result?.data?.accessToken) {
+          storeUserInfo({ accessToken: result?.data?.accessToken });
+          // router.push("/");
+        }
+      }
     } catch (err: any) {
-      console.log(err.message);
+      console.error(err.message);
     }
-
   };
   return (
     <Container>
@@ -156,7 +164,7 @@ const RegisterPage = () => {
                     items={districts}
                   />
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={6}>
                   <BDSelectField
                     items={BloodGroups}
                     name="bloodType"
@@ -164,6 +172,7 @@ const RegisterPage = () => {
                     sx={{ mt: 0.5 }}
                   />
                 </Grid>
+
                 <Grid item xs={12} sm={12} md={6}>
                   <BDSelectField
                     items={DonateOption}
@@ -173,13 +182,6 @@ const RegisterPage = () => {
                   />
                 </Grid>
 
-                {/* <Grid item xs={12} sm={12} md={6}>
-                  <ControlledDatePicker
-                    name="lastDonationDate"
-                    label="Last Donation Date"
-                    sx={{ mt: 0.5 }}
-                  />
-                </Grid> */}
                 <Grid item xs={12} sm={12} md={6}>
                   <BDInput
                     label="Age"
@@ -189,6 +191,14 @@ const RegisterPage = () => {
                     type="number"
                   />
                 </Grid>
+
+                <Grid item xs={12} sm={12} md={6}>
+                  <BDDatePicker
+                    name="lastDonationDate"
+                    label="Last Donation Date"
+                    sx={{ mt: 0.5 }}
+                  />
+                </Grid>
               </Grid>
 
               <Button
@@ -196,8 +206,7 @@ const RegisterPage = () => {
                   margin: "10px 0px",
                 }}
                 fullWidth={true}
-                type="submit"
-                disabled={isButtonDisabled}>
+                type="submit">
                 Register
               </Button>
 
@@ -205,12 +214,6 @@ const RegisterPage = () => {
                 Do you already have an account?{" "}
                 <Link href="/login">Login Here</Link>
               </Typography>
-
-              {/* {passwordMatchError && (
-                <Typography color="error" variant="body2">
-                  Passwords do not match.
-                </Typography>
-              )} */}
             </BDForm>
           </Box>
         </Box>
