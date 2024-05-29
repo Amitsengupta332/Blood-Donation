@@ -55,7 +55,18 @@ const RegisterPage = () => {
   const router = useRouter();
 
   const handleRegister = async (values: FieldValues) => {
-    const registerData = {
+    if (values?.password !== values?.confirmPassword) {
+      toast.error("Password does not match!");
+      return;
+    }
+
+    // if (values && values?.donateOption === "YES") {
+    //   values.donateOption = true;
+    // } else {
+    //   values.donateOption = false;
+    // }
+
+    const registerUserData = {
       name: values?.name,
       email: values?.email,
       password: values?.password,
@@ -63,14 +74,14 @@ const RegisterPage = () => {
       location: values?.address,
       lastDonationDate: dateFormatter(values?.lastDonationDate),
       age: Number(values?.age),
-      bio: "Write Your Bio Here",
+      bio: "Write Your Bio Here ...",
       availability: values?.donateOption === "YES" ? true : false,
     };
-    console.log(registerData);
-    // console.log(data);
+ 
     try {
-      const res = await registerUser(registerData);
+      const res = await registerUser(registerUserData);
       console.log(res);
+      // register user direct login functionality
       if (res?.data?.id) {
         toast.success("User registered successfully!");
         const result = await userLogin({
@@ -83,9 +94,10 @@ const RegisterPage = () => {
         }
       }
     } catch (err: any) {
-      console.error(err.message);
+      console.log(err.message);
     }
   };
+
   return (
     <Container>
       <Stack
