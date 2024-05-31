@@ -48,12 +48,12 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
         },
         {
           title: "My Requests",
-          path: `${role}/my-blood-donation-request`,
+          path: `${role}/donationRequest`,
           icon: PersonSearchIcon,
         },
         {
           title: "Received Requests",
-          path: `${role}/donation-request-for-blood`,
+          path: `${role}/myDonationRequest`,
           icon: BloodtypeIcon,
         }
       );

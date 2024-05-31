@@ -1,9 +1,11 @@
 "use client";
 import * as React from "react";
-import { AppBar, Badge, Box, CssBaseline, Drawer, IconButton, Stack, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Badge, Box, CssBaseline, Drawer, IconButton, Stack, Toolbar, Typography } from "@mui/material";
 import Sidebar from "../Sidebar/Sidebar";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import MenuIcon from "@mui/icons-material/Menu";
+import AccountMenu from "../AccountMenu/AccountMenu";
+ 
 
 const drawerWidth = 240;
 
@@ -91,6 +93,8 @@ export default function DashboardDrawer({
               </Badge>
               {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
               {/* <AccountMenu color="white" /> */}
+              {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
+              <AccountMenu />
             </Stack>
           </Box>
         </Toolbar>

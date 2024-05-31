@@ -1,4 +1,4 @@
-import { DrawerItems } from "@/types";
+import { DrawerItem } from "@/types";
 import {
   ListItem,
   ListItemButton,
@@ -9,7 +9,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 type IProps = {
-  item: DrawerItems;
+  item: DrawerItem;
   index?: number;
 };
 

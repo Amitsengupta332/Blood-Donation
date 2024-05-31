@@ -1,10 +1,10 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import Image from "next/image";
 import grid from "@/assets/svgs/grid.svg";
-import arrow from "@/assets/svgs/arrow.svg";
-import image1 from "@/assets/blood_images/img1.png";
+ 
+ 
 import image2 from "@/assets/blood_images/blood_image.png";
-import image3 from "@/assets/blood_images/3.png";
+ 
 import SearchIcon from "@mui/icons-material/Search";
 
 const HeroSection = () => {
