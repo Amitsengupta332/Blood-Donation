@@ -8,6 +8,11 @@ export type IMeta = {
   total: number;
 };
 
+export const RequestStatusOption = ["PENDING", "APPROVED"];
+
+export const UserRoleOption = ["ADMIN", "USER"];
+export const ActiveStatusOption = ["ACTIVATE", "DEACTIVATE"];
+
 export type UserRole = keyof typeof USER_ROLE;
 
 export const BloodGroups = [

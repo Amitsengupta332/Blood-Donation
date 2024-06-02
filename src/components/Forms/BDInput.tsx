@@ -1,4 +1,6 @@
+"use client";
 import { SxProps, TextField } from "@mui/material";
+import { FocusEvent } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 type TInputProps = {
@@ -7,11 +9,12 @@ type TInputProps = {
   type?: string;
   size?: "small" | "medium";
   fullWidth?: boolean;
+  disabled?: boolean;
   sx?: SxProps;
   placeholder?: string;
   required?: boolean;
+  onBlur?: (e: FocusEvent<HTMLInputElement, Element>) => void;
 };
-
 const BDInput = ({
   name,
   label,

@@ -12,15 +12,16 @@ export const setToLocalStorage = (key: string, token: string) => {
 };
 
 export const getFromLocalStorage = (key: string) => {
-  if (!key || typeof window === "undefined") {
-    return "";
-  }
+  // console.log("keys", localStorage.getItem(key));
+  // if (!key || typeof window === "undefined") {
+  //   return "";
+  // }
   return localStorage.getItem(key);
 };
 
 export const removeFromLocalStorage = (key: string) => {
-    if (!key || typeof window === "undefined") {
-      return "";
-    }
-    return localStorage.removeItem(key);
-  };
+  if (!key || typeof window === "undefined") {
+    return "";
+  }
+  return localStorage.removeItem(key);
+};
