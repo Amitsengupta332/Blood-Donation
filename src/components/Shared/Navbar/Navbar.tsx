@@ -16,13 +16,17 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo/blood labs.svg";
 import { useGetSingleUserQuery } from "@/redux/api/authApi";
+import { useGetMyBloodDonationRequestsQuery } from "@/redux/api/requestApi";
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const { data, isLoading } = useGetSingleUserQuery({});
+  // const { data, isLoading } = useGetSingleUserQuery({});
+  // console.log(data);
+
+  const { data, isLoading } = useGetMyBloodDonationRequestsQuery({});
   console.log(data);
 
   const handleMenu = (event: any) => {

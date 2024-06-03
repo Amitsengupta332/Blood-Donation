@@ -19,11 +19,12 @@ type TProps = {
 const StatusEditModal = ({
   open,
   setOpen,
-  requestStatus,
   requestId,
-  donateDate,
+  requestStatus,
+  donateDate
 }: TProps) => {
   const [updateRequestStatus] = useUpdateRequestStatusMutation();
+  console.log(updateRequestStatus);
 
   const handleFormSubmit = async (values: FieldValues) => {
     const updatedInfo = {
@@ -37,7 +38,6 @@ const StatusEditModal = ({
         body: updatedInfo,
       }).unwrap();
       console.log(res);
-
       if (res?.id) {
         toast.success("Request updated successfully!");
         setOpen(false);
@@ -45,34 +45,47 @@ const StatusEditModal = ({
     } catch (error: any) {
       console.log(error.message);
     }
+
+    // try {
+    //   const res = await updateRequestStatus({
+    //     id: requestId,
+    //     body: updatedInfo,
+    //   }).unwrap();
+    //   console.log(res);
+    //   if (res?.id) {
+    //     toast.success("Request updated successfully!");
+    //     setOpen(false);
+    //   }
+    // } catch (error: any) {
+    //   console.log(error.message);
+    // }
   };
 
   return (
-    <div>
-      <BDModal open={open} setOpen={setOpen} title="Update Request Status">
-        <BDForm onSubmit={handleFormSubmit}>
-          <Grid container spacing={2} my={1}>
-            <Grid item xs={12} sm={12} md={12}>
-              <BDInput
-                label={`Donate Date: ${donateDate}`}
-                fullWidth={true}
-                name="dateOfDonation"
-                disabled={true}
-              />
-            </Grid>
-            <Grid item xs={12} sm={12} md={12}>
-              <BDSelectField
-                items={RequestStatusOption}
-                name="status"
-                label="Status"
-                sx={{ mt: 0.5 }}
-                fullWidth={true}
-              />
-            </Grid>
+    <BDModal open={open} setOpen={setOpen} title="Update Request Status">
+      <BDForm onSubmit={handleFormSubmit}>
+        <Grid container spacing={2} my={1}>
+          <Grid item xs={12} sm={12} md={12}>
+            <BDInput
+              //${donateDate}
+              label={`Donate Date: ${donateDate} `}
+              fullWidth={true}
+              name="dateOfDonation"
+              disabled={true}
+            />
           </Grid>
-        </BDForm>
-      </BDModal>
-    </div>
+          <Grid item xs={12} sm={12} md={12}>
+            <BDSelectField
+              items={RequestStatusOption}
+              name="status"
+              label="Status"
+              sx={{ mt: 0.5 }}
+              fullWidth={true}
+            />
+          </Grid>
+        </Grid>
+      </BDForm>
+    </BDModal>
   );
 };
 

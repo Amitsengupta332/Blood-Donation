@@ -38,7 +38,7 @@ const requestApi = baseApi.injectEndpoints({
       //       meta: meta,
       //     };
       //   },
-      // providesTags: [tagTypes.request],
+      providesTags: [tagTypes.request],
     }),
 
     updateRequestStatus: build.mutation({

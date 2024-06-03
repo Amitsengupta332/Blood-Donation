@@ -49,12 +49,9 @@ const MyProfile = () => {
   const defaultValues = {
     name: userData?.name || null,
     email: userData?.email || null,
-
-    gender: userData?.userProfile?.gender || "MALE",
+    // gender: userData?.userProfile?.gender || "MALE",
     bloodType: userData?.bloodType || null,
-
     age: userData?.userProfile?.age || 0,
-
     location: userData?.location || null,
     lastDonationDate: userData?.userProfile?.lastDonationDate
       ? dayjs(userData?.userProfile?.lastDonationDate)
@@ -77,15 +74,6 @@ const MyProfile = () => {
             sx={{ mb: 2 }}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={4}>
-          <BDInput
-            name="phoneNumber"
-            label="Contact Number"
-            fullWidth={true}
-            type="number"
-            sx={{ mb: 2 }}
-          />
-        </Grid>
 
         <Grid item xs={12} sm={12} md={4}>
           <BDSelectField
@@ -95,14 +83,7 @@ const MyProfile = () => {
             sx={{ mb: 2 }}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={4}>
-          <BDSelectField
-            items={DonateOption}
-            name="availability"
-            label="Availability"
-            sx={{ mb: 2 }}
-          />
-        </Grid>
+
         <Grid item xs={12} sm={12} md={4}>
           <BDInput
             name="age"
@@ -122,10 +103,10 @@ const MyProfile = () => {
           />
         </Grid>
 
-        <Grid item xs={12} sm={12} md={6}>
+        <Grid item xs={12} sm={12} md={4}>
           <BDDatePicker name="lastDonationDate" label="Last Donation Date" />
         </Grid>
-        <Grid item xs={12} sm={12} md={6}>
+        <Grid item xs={12} sm={12} md={12}>
           <BDInput name="bio" label="Bio" fullWidth={true} sx={{ mb: 2 }} />
         </Grid>
       </Grid>
