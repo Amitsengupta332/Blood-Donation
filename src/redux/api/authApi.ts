@@ -7,6 +7,7 @@ export const authApi = baseApi.injectEndpoints({
       query: () => ({
         url: "/my-profile",
         method: "GET",
+        contentType: "multipart/form-data",
       }),
       providesTags: [tagTypes.user],
     }),

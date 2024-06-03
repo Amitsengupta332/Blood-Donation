@@ -13,7 +13,7 @@ export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
 
 export const getUserInfo = () => {
   const authToken = getFromLocalStorage(authKey);
-  console.log(authToken);
+  console.log("authToken", authToken);
 
   if (authToken) {
     const decodedData: any = decodedToken(authToken);
@@ -35,11 +35,22 @@ export const removeUser = () => {
   return removeFromLocalStorage(authKey);
 };
 
+// export const getNewAccessToken = async () => {
+//   return await axiosInstance({
+//     url: "http://localhost:5000/api/refresh-token",
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     withCredentials: true,
+//   });
+// };
+
 export const getNewAccessToken = async () => {
   return await axiosInstance({
     url: "http://localhost:5000/api/refresh-token",
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     withCredentials: true,
   });
 };
