@@ -68,9 +68,9 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import testimonial1 from "@/assets/testimonials/young-bearded-man-with-striped-shirt_273609-5677.avif";
-import testimonial2 from "@/assets/testimonials/handsome-adult-blond-man-smiling-positively-confidently-looking-satisfied-friendly-happy_1194-219505.avif";
-import testimonial3 from "@/assets/testimonials/portrait-joyful-young-man-white-shirt_171337-17467.avif";
+import testimonial1 from "@/assets/testimonials/2.png";
+import testimonial2 from "@/assets/testimonials/Untitled design.png";
+import testimonial3 from "@/assets/testimonials/3.png";
 
 const testimonials = [
   {
@@ -81,14 +81,14 @@ const testimonials = [
     image: testimonial1,
   },
   {
-    name: "Jane Smith",
+    name: "Mike Johnson",
     role: "Blood & Platelet Donor",
     testimonial:
       "As a regular blood and platelet donor, I’ve seen firsthand how crucial donations are in emergencies. It's a small act of kindness that goes a long way. Every time I donate, I feel a sense of fulfillment knowing that I’m helping someone in need. The Blood Donation website has made it so easy to schedule appointments and keep track of my donation history.",
     image: testimonial2,
   },
   {
-    name: "Emily Davis",
+    name: "Robert Brown",
     role: "Recipient",
     testimonial:
       "I needed a blood transfusion during a major surgery, and thanks to the generosity of blood donors, I’m here today. Words cannot express my gratitude for those who take the time to donate blood. The Blood Donation website has connected me with amazing donors, and I’m forever grateful.",
