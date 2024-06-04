@@ -28,7 +28,7 @@ const requestApi = baseApi.injectEndpoints({
 
     getRequestsMadeByMe: build.query({
       query: (arg: Record<string, any>) => ({
-        url: "/donation-request-by-me",
+        url: "/received-request",
         method: "GET",
         params: arg,
       }),
@@ -49,7 +49,7 @@ const requestApi = baseApi.injectEndpoints({
           data: data.body,
         };
       },
-        invalidatesTags: [tagTypes.request],
+      invalidatesTags: [tagTypes.request],
     }),
   }),
 });

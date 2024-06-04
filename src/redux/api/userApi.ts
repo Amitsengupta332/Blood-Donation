@@ -18,6 +18,13 @@ const userApi = baseApi.injectEndpoints({
       },
       providesTags: [tagTypes.user],
     }),
+    getSingleDonor: build.query({
+      query: (id: string | undefined) => ({
+        url: `/donor-list/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.user],
+    }),
 
     updateUser: build.mutation({
       query: (data) => {
@@ -32,4 +39,4 @@ const userApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllDonorsQuery, useUpdateUserMutation } = userApi;
+export const { useGetAllDonorsQuery,useGetSingleDonorQuery, useUpdateUserMutation } = userApi;

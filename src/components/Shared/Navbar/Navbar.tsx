@@ -26,8 +26,8 @@ const Navbar = () => {
   // const { data, isLoading } = useGetSingleUserQuery({});
   // console.log(data);
 
-  const { data, isLoading } = useGetMyBloodDonationRequestsQuery({});
-  console.log(data);
+  // const { data, isLoading } = useGetMyBloodDonationRequestsQuery({});
+  // console.log(data);
 
   const handleMenu = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -50,8 +50,7 @@ const Navbar = () => {
                 alignItems: "center",
                 justifyItems: "center",
                 gap: "7px",
-              }}
-            >
+              }}>
               <Image src={logo} alt="logo" height={100} width={100} />
               <Typography fontSize={"26px"} fontWeight={600}>
                 Blood Labs
@@ -64,8 +63,7 @@ const Navbar = () => {
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                onClick={handleMenu}
-              >
+                onClick={handleMenu}>
                 <MenuIcon />
               </IconButton>
               <Menu
@@ -79,8 +77,7 @@ const Navbar = () => {
                 anchorOrigin={{
                   vertical: "top",
                   horizontal: "right",
-                }}
-              >
+                }}>
                 <MenuItem href={"/"}>Home</MenuItem>
                 <MenuItem href={"/aboutUs"}>About Us</MenuItem>
                 <MenuItem href={"/"}>My Profile</MenuItem>
@@ -90,8 +87,7 @@ const Navbar = () => {
             <Box
               sx={{ display: "flex", gap: "20px", alignItems: "center" }}
               fontSize={"18px"}
-              fontWeight={500}
-            >
+              fontWeight={500}>
               <Link href={"/"} color="inherit">
                 Home
               </Link>
