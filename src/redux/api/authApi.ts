@@ -22,7 +22,16 @@ export const authApi = baseApi.injectEndpoints({
       },
       invalidatesTags: [tagTypes.user],
     }),
+    passwordChanged: build.mutation({
+      query: (data) => ({
+        url: `/change-password`,
+        method: "POST",
+        contentType: "application/json",
+        data: data,
+      }),
+      invalidatesTags: [tagTypes.user],
+    }),
   }),
 });
 
-export const { useGetSingleUserQuery, useUpdateMyProfileMutation } = authApi;
+export const { useGetSingleUserQuery, useUpdateMyProfileMutation, usePasswordChangedMutation } = authApi;

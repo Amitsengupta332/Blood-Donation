@@ -198,32 +198,7 @@ export default function AccountMenu({ color }: { color: string }) {
               },
             },
           }}>
-          {/* <IconButton
-            onClick={handleClick}
-            aria-controls={open ? "account-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            //   size='small'
-            sx={{
-              background: "#ffffff",
-              "& svg": {
-                color: "primary.main",
-              },
-            }}
-          >
-            <KeyboardArrowDownIcon />
-          </IconButton> */}
           <IconButton onClick={handleClick} sx={{ p: 0 }}>
-            {/* <Box
-              sx={{
-                border: `3px solid ${color}`,
-                borderRadius: "50%",
-                padding: "6px 6px 8px 10px",
-              }}
-            >
-              <Image alt="Remy Sharp" src={userLogo} height={25} width={25} />
-            </Box> */}
-
             <Box
               sx={{
                 border: `3px solid white`,
@@ -243,7 +218,9 @@ export default function AccountMenu({ color }: { color: string }) {
                 },
               }}>
               {/* <PersonPinIcon height={50} width={50} /> */}
-              <Avatar sx={{ background: "transparent", color: "primary.main" }} />
+              <Avatar
+                sx={{ background: "transparent", color: "primary.main" }}
+              />
               {/* <Image alt="Remy Sharp" src={avatar} height={50} width={50} /> */}
             </Box>
           </IconButton>
