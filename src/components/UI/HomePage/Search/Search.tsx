@@ -1,4 +1,5 @@
 "use client";
+import DonorCard from "@/components/Shared/DonorCard/DonorCard";
 import SearchDonor from "@/components/Shared/SearchDonor/SearchDonor";
 import { useGetAllDonorsQuery } from "@/redux/api/userApi";
 import { Box, Container, Grid, Typography } from "@mui/material";
@@ -20,10 +21,10 @@ const Search = () => {
   //   if (searchTerm.availability) {
   //     query["availability"] = searchTerm.availability;
   //   }
-  // const { data, isLoading } = useGetAllDonorsQuery({});
+  const { data, isLoading } = useGetAllDonorsQuery({});
   // console.log(data);
 
-  // const donors = data?.donors;
+  const donors = data?.donors;
   // const meta = data?.meta;
   return (
     <Container>
@@ -54,16 +55,20 @@ const Search = () => {
 
       <Box sx={{ mt: 4 }}>
         <Grid container spacing={2}>
-          {/* {isLoading ? (
-            <DonorLoadingPage />
-          ) : (
-            donors &&
-            donors.slice(0, 6).map((item, index) => (
-              <Grid item key={item.id} xs={12} sm={12} md={4}>
-                <DonorCard item={item} />
+        <Box sx={{ mt: 4 }}>
+              <Grid container spacing={2}>
+                {isLoading ? (
+                 <Typography>Loading</Typography>
+                ) : (
+                  donors &&
+                  donors.slice(0, 6).map((item, index) => (
+                    <Grid item key={item.id} xs={12} sm={12} md={4}>
+                      <DonorCard item={item} />
+                    </Grid>
+                  ))
+                )}
               </Grid>
-            ))
-          )} */}
+            </Box>
         </Grid>
       </Box>
     </Container>

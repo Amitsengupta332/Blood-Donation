@@ -1,14 +1,14 @@
 "use client";
+import DonorCard from "@/components/Shared/DonorCard/DonorCard";
 import { useGetAllDonorsQuery } from "@/redux/api/userApi";
 import { Box, Container, Grid, Typography } from "@mui/material";
 
 const AllDonors = () => {
   const { data, isLoading } = useGetAllDonorsQuery({});
-//   console.log(data);
+  // console.log(data);
 
   const donors = data?.donors;
   const meta = data?.meta;
-
 
   return (
     <Container>
@@ -18,20 +18,20 @@ const AllDonors = () => {
         </Typography>
       </Box>
 
-      {/* <Box sx={{ mt: 4 }}>
-          <Grid container spacing={2}>
-            {isLoading ? (
-              <DonorLoadingPage />
-            ) : (
-              donors &&
-              donors.slice(0, 6).map((item, index) => (
-                <Grid item key={item.id} xs={12} sm={12} md={4}>
-                  <RecentDonarCard item={item} />
-                </Grid>
-              ))
-            )}
-          </Grid>
-        </Box> */}
+      <Box sx={{ mt: 4 }}>
+        <Grid container spacing={2}>
+          {isLoading ? (
+            <Typography>Loading...</Typography>
+          ) : (
+            donors &&
+            donors.slice(0, 6).map((item, index) => (
+              <Grid item key={item.id} xs={12} sm={12} md={4}>
+                <DonorCard item={item} />
+              </Grid>
+            ))
+          )}
+        </Grid>
+      </Box>
     </Container>
   );
 };

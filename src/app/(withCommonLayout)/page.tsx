@@ -4,6 +4,7 @@ import HeroSection from "@/components/UI/HomePage/HeroSection/HeroSection";
 import Maps from "@/components/UI/HomePage/Maps/Maps";
 import Search from "@/components/UI/HomePage/Search/Search";
 import Testimonials from "@/components/UI/HomePage/Testimonials/Testimonials";
+import AboutUsSection from "@/components/UI/HomePage/AboutUsSection/AboutUsSection";
 
 const HomePage = () => {
   return (
@@ -11,9 +12,10 @@ const HomePage = () => {
       <HeroSection />
       <Search />
       <AllDonors />
-      <DonationTips />
-      <Testimonials />
       <Maps />
+      <DonationTips />
+      <AboutUsSection />
+      <Testimonials />
     </>
   );
 };

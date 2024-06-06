@@ -4,6 +4,7 @@ import { formatBloodType } from "@/utils/formatBloodType";
 import { Box, Button, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useState } from "react";
+import UserModal from "./components/UserModal";
 
 const ManageUsers = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -12,59 +13,58 @@ const ManageUsers = () => {
   console.log(data?.donors);
 
   const donors = data?.donors;
- 
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", flex: 1 },
     { field: "email", headerName: "Email", width: 220 },
-    // {
-    //   field: "bloodType",
-    //   headerName: "Blood Group",
-    //   flex: 1,
-    //   renderCell: ({ row }: any) => {
-    //     return (
-    //       <Box
-    //         sx={{
-    //           height: "100%",
-    //           display: "flex",
-    //           alignItems: "center",
-    //         }}>
-    //         <Typography>{bloodTypeFormat(row.bloodType)}</Typography>
-    //       </Box>
-    //     );
-    //   },
-    // },
+    {
+      field: "bloodType",
+      headerName: "Blood Group",
+      flex: 1,
+      renderCell: ({ row }: any) => {
+        return (
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+            }}>
+            <Typography>{formatBloodType(row.bloodType)}</Typography>
+          </Box>
+        );
+      },
+    },
     { field: "availability", headerName: "Availability", flex: 1 },
     { field: "location", headerName: "Location", flex: 1 },
     { field: "role", headerName: "Role", flex: 1 },
     { field: "activeStatus", headerName: "Status", flex: 1 },
-    // {
-    //   field: "button",
-    //   headerName: "Action",
-    //   flex: 1,
-    //   align: "center",
-    //   renderCell: ({ row }: any) => {
-    //     return (
-    //       <Box
-    //         sx={{
-    //           height: "100%",
-    //           display: "flex",
-    //           alignItems: "center",
-    //         }}>
-    //         <Button
-    //           onClick={() => {
-    //             setIsModalOpen(true);
-    //             setUpdateUserId(row?.id);
-    //           }}
-    //           variant="contained"
-    //           size="small"
-    //           sx={{ p: "5px 10px" }}>
-    //           Edit User
-    //         </Button>
-    //       </Box>
-    //     );
-    //   },
-    // },
+    {
+      field: "button",
+      headerName: "Action",
+      flex: 1,
+      align: "center",
+      renderCell: ({ row }: any) => {
+        return (
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+            }}>
+            <Button
+              onClick={() => {
+                setIsModalOpen(true);
+                setUpdateUserId(row?.id);
+              }}
+              variant="outlined"
+              size="small"
+              sx={{ p: "5px 10px" }}>
+              Edit User
+            </Button>
+          </Box>
+        );
+      },
+    },
   ];
 
   return (
@@ -75,16 +75,16 @@ const ManageUsers = () => {
         </Typography>
       </Box>
 
-      {/* <userModal
+      <UserModal
         open={isModalOpen}
         setOpen={setIsModalOpen}
         userId={updateUserId}
-      /> */}
+      />
 
       {!isLoading ? (
         <Box>
           <DataGrid
-            rows={donors?.data}
+            rows={donors}
             columns={columns}
             initialState={{
               pagination: {

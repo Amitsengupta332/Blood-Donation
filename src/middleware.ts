@@ -6,7 +6,11 @@ import type { NextRequest } from "next/server";
 type Role = keyof typeof roleBasedPrivateRoutes;
 
 const AuthRoutes = ["/login", "/register"];
-const commonPrivateRoutes = ["/dashboard", "/dashboard/change-password"];
+const commonPrivateRoutes = [
+  "/dashboard",
+  "/dashboard/change-password",
+  //   "/doctors",
+];
 const roleBasedPrivateRoutes = {
   ADMIN: [/^\/dashboard\/admin/],
   USER: [/^\/dashboard\/user/],
@@ -25,25 +29,25 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  if (
-    accessToken &&
-    (commonPrivateRoutes.includes(pathname) ||
-      commonPrivateRoutes.some((route) => pathname.startsWith(route)))
-  ) {
+  // for common private route (not role based)
+  if (accessToken && commonPrivateRoutes.includes(pathname)) {
     return NextResponse.next();
   }
 
+  // for role base private route
   let decodedData = null;
-
   if (accessToken) {
     decodedData = jwtDecode(accessToken) as any;
   }
-
   const role = decodedData?.role;
 
-  // if (role === 'ADMIN' && pathname.startsWith('/dashboard/admin')) {
-  //    return NextResponse.next();
-  // }
+  //   if (role === "ADMIN" && pathname.startsWith("/dashboard/admin")) {
+  //     return NextResponse.next();
+  //   }
+
+  //   if (role === "USER" && pathname.startsWith("/dashboard/user")) {
+  //     return NextResponse.next();
+  //   }
 
   if (role && roleBasedPrivateRoutes[role as Role]) {
     const routes = roleBasedPrivateRoutes[role as Role];
@@ -55,6 +59,7 @@ export function middleware(request: NextRequest) {
   return NextResponse.redirect(new URL("/", request.url));
 }
 
+// See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/login", "/register", "/dashboard/:page*" ],
+  matcher: ["/dashboard/:path*", "/login", "/register"],
 };

@@ -74,13 +74,6 @@ const SearchDonor = ({ search, setSearch }: SearchDonorProps) => {
                   label="Date of Blood Donation"
                 />
               </Grid>
-              {/* <Grid item xs={12} sm={12} md={3}>
-                <BDSelectField
-                  items={DonorType}
-                  name="donorType"
-                  label="Donor Type"
-                />
-              </Grid> */}
             </Grid>
             <Button
               sx={{

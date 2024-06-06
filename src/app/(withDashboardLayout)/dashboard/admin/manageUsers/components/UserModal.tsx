@@ -1,10 +1,11 @@
 import BDForm from "@/components/Forms/BDForm";
 import BDInput from "@/components/Forms/BDInput";
 import BDSelectField from "@/components/Forms/BDSelectField";
+import BDFullScreenModal from "@/components/Shared/BDModal/BDFullScreenModal";
 import BDModal from "@/components/Shared/BDModal/BDModal";
 import { useUpdateUserMutation } from "@/redux/api/userApi";
 import { ActiveStatusOption, UserRoleOption } from "@/types";
-import { Button, Grid } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import React from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
@@ -39,18 +40,10 @@ const UserModal = ({ open, setOpen, userId }: TProps) => {
   };
 
   return (
-    <div>
-      <BDModal open={open} setOpen={setOpen} title="Update User Info">
+    <Container>
+      <BDFullScreenModal open={open} setOpen={setOpen} title="Update User Info">
         <BDForm onSubmit={handleFormSubmit}>
           <Grid container spacing={2} my={1}>
-            <Grid item xs={12} sm={12} md={12}>
-              <BDInput
-                label="Name"
-                fullWidth={true}
-                name="name"
-                disabled={true}
-              />
-            </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <BDSelectField
                 items={UserRoleOption}
@@ -80,8 +73,8 @@ const UserModal = ({ open, setOpen, userId }: TProps) => {
             Register
           </Button>
         </BDForm>
-      </BDModal>
-    </div>
+      </BDFullScreenModal>
+    </Container>
   );
 };
 
