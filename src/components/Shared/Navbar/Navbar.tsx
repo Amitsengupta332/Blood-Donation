@@ -142,8 +142,13 @@ import useUserInfo from "@/hooks/useUserInfo";
 import { logoutUser } from "@/services/actions/logoutUser";
 import { authKey } from "@/contants/authkey";
 import { deleteCookies } from "@/services/actions/deleteCookies";
+import dynamic from "next/dynamic";
 
 const Navbar = () => {
+  const AuthButton = dynamic(
+    () => import("@/components/UI/AuthButton/AuthButton"),
+    { ssr: false }
+  );
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
@@ -214,7 +219,9 @@ const Navbar = () => {
                 <MenuItem component={Link} href={"/aboutUs"}>
                   About Us
                 </MenuItem>
-                {userInfo ? (
+
+                <AuthButton />
+                {/* {userInfo ? (
                   <>
                     <MenuItem component={Link} href={"/myProfile"}>
                       My Profile
@@ -230,7 +237,7 @@ const Navbar = () => {
                   <MenuItem component={Link} href={"/login"}>
                     Login
                   </MenuItem>
-                )}
+                )} */}
               </Menu>
             </Box>
           ) : (
@@ -244,7 +251,8 @@ const Navbar = () => {
               <Link href={"/aboutUs"} color="inherit">
                 About Us
               </Link>
-              {userInfo ? (
+              <AuthButton />
+              {/* {userInfo ? (
                 <>
                   <Link href={"/myProfile"} color="inherit">
                     My Profile
@@ -260,7 +268,7 @@ const Navbar = () => {
                 <Button component={Link} href="/login" sx={{ ml: "30px" }}>
                   Login
                 </Button>
-              )}
+              )} */}
             </Box>
           )}
         </Toolbar>
