@@ -8,12 +8,43 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import SendIcon from "@mui/icons-material/Send";
+import { useCreateRequestForDonateBloodMutation } from "@/redux/api/requestApi";
+import { dateFormatter } from "@/utils/dateFormatter";
+import { toast } from "sonner";
 
-const BloodRequest = () => {
+interface IProps {
+  donorId: string;
+}
+
+const BloodRequest = ({ donorId }: IProps) => {
   const [loading, setLoading] = useState(false);
+  const [createRequestForDonateBlood] =
+    useCreateRequestForDonateBloodMutation();
   const { data, isLoading } = useGetSingleUserQuery({});
 
-  const handleRequest = async (values: FieldValues) => {};
+  const handleRequest = async (values: FieldValues) => {
+    console.log(values);
+    setLoading(true);
+
+    const requestData = {
+      donorId: donorId,
+      phoneNumber: values?.phoneNumber,
+      dateOfDonation: dateFormatter(values?.dateOfDonation),
+      hospitalName: values?.hospitalName,
+      hospitalAddress: values?.hospitalAddress,
+      reason: values?.reason,
+    };
+    try {
+      const res = await createRequestForDonateBlood(requestData).unwrap();
+      console.log(res);
+      if (res?.id) {
+        toast.success("Your request sent successfully!");
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const defaultValues = {
     name: data?.name,
@@ -25,28 +56,11 @@ const BloodRequest = () => {
   };
 
   return (
-    <Container>
+    <Container sx={{ mt: 4 }}>
       <Box sx={{ textAlign: "center" }}>
         <Typography variant="h5" component="h4" fontWeight={600} sx={{ mb: 1 }}>
           Request For Blood Donate
         </Typography>
-        <Box
-          sx={{
-            backgroundColor: "#878787",
-            borderRadius: "8px",
-            height: "6px",
-            width: "70%",
-            mx: "auto",
-          }}></Box>
-        <Box
-          sx={{
-            backgroundColor: "#878787",
-            borderRadius: "8px",
-            height: "6px",
-            width: "60%",
-            mx: "auto",
-            mt: 2,
-          }}></Box>
       </Box>
 
       <Box sx={{ width: "70%", mx: "auto", mt: 4 }}>
@@ -118,7 +132,7 @@ const BloodRequest = () => {
             sx={{
               margin: "10px 0px",
             }}>
-            <span>Send Blood Request</span>
+            Send Blood Request
           </LoadingButton>
         </BDForm>
       </Box>

@@ -21,10 +21,10 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
-      <Head>
-          <link rel="icon" href="/bloodLabs.png" />
+        <Head>
+          <link rel="icon" href="./bloodLabs.png" />
         </Head>
-        <body >
+        <body>
           <AppRouterCacheProvider>
             <Toaster position="top-center" />
             {children}

@@ -45,7 +45,7 @@ const requestApi = baseApi.injectEndpoints({
       query: (data) => {
         return {
           url: `/donation-request/${data.id}`,
-          method: "PATCH",
+          method: "PUT",
           data: data.body,
         };
       },

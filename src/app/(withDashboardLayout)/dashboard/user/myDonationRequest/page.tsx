@@ -5,6 +5,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Link from "next/link";
 import { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import { formatBloodType } from "@/utils/formatBloodType";
 
 const ReceivedRequest = () => {
   const { data, isLoading } = useGetRequestsMadeByMeQuery({});
@@ -13,7 +14,23 @@ const ReceivedRequest = () => {
 
   const columns: GridColDef[] = [
     { field: "sl", headerName: "SL", width: 30 },
-    { field: "name", headerName: "Donor Name", flex: 1 },
+    {
+      field: "requester.name",
+      headerName: "RequesterName",
+      flex: 1,
+      renderCell: ({ row }) => {
+        return (
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+            }}>
+            <Typography>{row.requester.name}</Typography>
+          </Box>
+        );
+      },
+    },
     // {
     //   field: "contactInfo",
     //   headerName: "Contact Info",
@@ -119,7 +136,7 @@ const ReceivedRequest = () => {
       {!isLoading ? (
         <Box>
           <DataGrid
-            rows={allRequest ?? []}
+            rows={data}
             columns={columns}
             initialState={{
               pagination: {

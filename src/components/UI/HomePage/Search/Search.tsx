@@ -27,7 +27,7 @@ const Search = () => {
   const donors = data?.donors;
   // const meta = data?.meta;
   return (
-    <Container>
+    <Container sx={{mt:4, mb:4}}>
       <Box textAlign="center" sx={{ mb: 4 }}>
         <Typography variant="h3" fontWeight={600}>
           Search Donors
@@ -53,7 +53,7 @@ const Search = () => {
         </Typography>
       </Box> */}
 
-      <Box sx={{ mt: 4 }}>
+      {/* <Box sx={{ mt: 4 }}>
         <Grid container spacing={2}>
         <Box sx={{ mt: 4 }}>
               <Grid container spacing={2}>
@@ -70,7 +70,7 @@ const Search = () => {
               </Grid>
             </Box>
         </Grid>
-      </Box>
+      </Box> */}
     </Container>
   );
 };

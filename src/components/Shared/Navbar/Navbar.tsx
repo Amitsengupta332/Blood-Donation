@@ -219,6 +219,9 @@ const Navbar = () => {
                 <MenuItem component={Link} href={"/aboutUs"}>
                   About Us
                 </MenuItem>
+                <MenuItem component={Link} href={"/Donors"}>
+                  About Us
+                </MenuItem>
 
                 <AuthButton />
                 {/* {userInfo ? (
@@ -250,6 +253,10 @@ const Navbar = () => {
               </Link>
               <Link href={"/aboutUs"} color="inherit">
                 About Us
+              </Link>
+              <Link href={"/Donors"} color="inherit">
+                
+                All Donors
               </Link>
               <AuthButton />
               {/* {userInfo ? (

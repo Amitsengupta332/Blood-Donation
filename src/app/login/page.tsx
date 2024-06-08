@@ -22,10 +22,10 @@ import { toast } from "sonner";
 import { storeUserInfo } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
 
-export const validationSchema = z.object({
-  email: z.string().email("Please enter a valid email address!"),
-  password: z.string().min(6, "Must be at least 6 characters"),
-});
+// export const validationSchema = z.object({
+//   email: z.string().email("Please enter a valid email address!"),
+//   password: z.string().min(6, "Must be at least 6 characters"),
+// });
 const LoginPage = () => {
   const [error, setError] = useState("");
   // const router = useRouter();
@@ -97,7 +97,7 @@ const LoginPage = () => {
           <Box>
             <BDForm
               onSubmit={handleLogin}
-              resolver={zodResolver(validationSchema)}
+              // resolver={zodResolver(validationSchema)}
               defaultValues={{
                 email: "",
                 password: "",

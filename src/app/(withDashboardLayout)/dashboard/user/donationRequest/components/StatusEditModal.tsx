@@ -1,10 +1,13 @@
+"use client";
 import BDForm from "@/components/Forms/BDForm";
 import BDInput from "@/components/Forms/BDInput";
 import BDSelectField from "@/components/Forms/BDSelectField";
 import BDModal from "@/components/Shared/BDModal/BDModal";
 import { useUpdateRequestStatusMutation } from "@/redux/api/requestApi";
 import { RequestStatusOption } from "@/types";
-import { Grid } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { Button, Grid } from "@mui/material";
+import { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -21,14 +24,16 @@ const StatusEditModal = ({
   setOpen,
   requestId,
   requestStatus,
-  donateDate
+  donateDate,
 }: TProps) => {
+  const [loading, setLoading] = useState(false);
   const [updateRequestStatus] = useUpdateRequestStatusMutation();
   console.log(updateRequestStatus);
 
   const handleFormSubmit = async (values: FieldValues) => {
+    setLoading(true);
     const updatedInfo = {
-      requestStatus: values?.status,
+      status: values?.status,
     };
     console.log(updatedInfo);
 
@@ -84,6 +89,18 @@ const StatusEditModal = ({
             />
           </Grid>
         </Grid>
+
+        <LoadingButton
+          size="small"
+          type="submit"
+          loading={loading}
+          variant="contained"
+          fullWidth={true}
+          sx={{
+            margin: "10px 0px",
+          }}>
+          Update
+        </LoadingButton>
       </BDForm>
     </BDModal>
   );

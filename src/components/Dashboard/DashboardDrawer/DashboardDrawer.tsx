@@ -1,11 +1,22 @@
 "use client";
 import * as React from "react";
-import { AppBar, Avatar, Badge, Box, CssBaseline, Drawer, IconButton, Stack, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Badge,
+  Box,
+  CssBaseline,
+  Drawer,
+  IconButton,
+  Stack,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import Sidebar from "../Sidebar/Sidebar";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountMenu from "../AccountMenu/AccountMenu";
- 
+import { useGetSingleUserQuery } from "@/redux/api/authApi";
 
 const drawerWidth = 240;
 
@@ -32,7 +43,7 @@ export default function DashboardDrawer({
     }
   };
 
-//   const { data, isLoading } = useGetSingleUserQuery({});
+  const { data, isLoading } = useGetSingleUserQuery({});
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -46,16 +57,14 @@ export default function DashboardDrawer({
           boxShadow: 0,
           borderBottom: "1px solid #ddd",
           py: 1,
-        }}
-      >
+        }}>
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
+            sx={{ mr: 2, display: { sm: "none" } }}>
             <MenuIcon sx={{ color: "primary.main" }} />
           </IconButton>
           <Box
@@ -64,24 +73,21 @@ export default function DashboardDrawer({
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
-            }}
-          >
+            }}>
             <Box>
               <Typography
                 variant="body2"
                 noWrap
                 component="div"
-                sx={{ color: "primary.main" }}
-              >
-                Hi, Amit 
-                {/* Hi, {isLoading ? "Loading..." : data?.name}. */}
+                sx={{ color: "primary.main" }}>
+                {/* Hi, Amit  */}
+                Hi, {isLoading ? "Loading..." : data?.name}.
               </Typography>
               <Typography
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ color: "black" }}
-              >
+                sx={{ color: "black" }}>
                 Welcome to Blood Labs
               </Typography>
             </Box>
@@ -94,7 +100,7 @@ export default function DashboardDrawer({
               {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
               {/* <AccountMenu color="white" /> */}
               {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
-              <AccountMenu />
+              <AccountMenu color="white" />
             </Stack>
           </Box>
         </Toolbar>
@@ -102,8 +108,7 @@ export default function DashboardDrawer({
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
+        aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           variant="temporary"
@@ -119,8 +124,7 @@ export default function DashboardDrawer({
               boxSizing: "border-box",
               width: drawerWidth,
             },
-          }}
-        >
+          }}>
           <Sidebar />
         </Drawer>
         <Drawer
@@ -132,8 +136,7 @@ export default function DashboardDrawer({
               width: drawerWidth,
             },
           }}
-          open
-        >
+          open>
           <Sidebar />
         </Drawer>
       </Box>
@@ -143,8 +146,7 @@ export default function DashboardDrawer({
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-        }}
-      >
+        }}>
         <Toolbar />
         <Box>{children}</Box>
       </Box>
