@@ -80,6 +80,16 @@ Check out the live version of the website here: [Blood Donation Website](https:/
 ### Admin Dashboard
 - **User Management**: View and manage user accounts.
 
+## Credentials
+
+### 👨‍💼 Admin
+- Email: amit@email.com  
+- Password: 123456  
+
+### 👤 User
+- Email: b@email.com  
+- Password: 123456  
+
 ## Installation
 
 1. Clone the repository:
